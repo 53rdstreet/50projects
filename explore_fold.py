@@ -18,7 +18,8 @@ print(concat_a)
 
 result0 = functools.reduce(lambda acc, item: acc + item, [1, 2, 3, 4, 5])
 result1 = functools.reduce(lambda acc, item: acc * item, [1, 2, 3, 4, 5])
-result2 = functools.reduce(lambda acc, item: acc * item, [1, 2, 3, 4, 5])
+result2 = functools.reduce(lambda acc, item: acc + str(item), [1, 2, 3, 4, 5], "")
+'12345'
 
 
 
