@@ -19,9 +19,9 @@ print(concat_a)
 result0 = functools.reduce(lambda acc, item: acc + item, [1, 2, 3, 4, 5])
 result1 = functools.reduce(lambda acc, item: acc * item, [1, 2, 3, 4, 5])
 result2 = functools.reduce(lambda acc, item: acc + str(item), [1, 2, 3, 4, 5], "")
-'12345'
-
-
+result3 = functools.reduce(lambda acc, item: {**acc, item[0]: item[1]}, [("A", 1), ("B", 2), ("C", 3)], {})
 
 print(result0)
 print(result1)
+print(result2)
+print(result3)
