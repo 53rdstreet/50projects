@@ -40,3 +40,18 @@ response_fn_test = chat(
     database to a SQL Server on a network server using ODBC:."]
 )
 display(Markdown(response_fn_test))
+
+## function calling
+
+completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo-0613",
+    messages=[
+        {
+            "role": "user",
+            "content": "When's the next train from Washington D.C. to New York?",
+        },
+    ],
+)
+
+output = completion.choices[0].message.content
+print(output)
