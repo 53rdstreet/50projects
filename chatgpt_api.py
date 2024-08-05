@@ -55,3 +55,37 @@ completion = openai.ChatCompletion.create(
 
 output = completion.choices[0].message.content
 print(output)
+
+function_descriptions = [
+    {
+        "name": "get_flight_info",
+        "description": "Get flight information between two locations",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "loc_origin": {
+                    "type": "string",
+                    "description": "The departure airport, for example: DUS",
+                },
+                "loc_destination": {
+                    "type": "string",
+                    "description": "The destination airport, for example: HAM",
+                },
+            },
+            "required": ["loc_origin", "loc_destination"],
+        },
+    }
+]
+
+user_prompt = "When's the next flight from Amsterdam to New York?"
+
+completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo-0613",
+    messages=[{"role": "user", "content": user_prompt}],
+    # Add function calling
+    functions=function_descriptions,
+    function_call="auto",  # specify the function call
+)
+
+output = completion.choices[0].message
+print(output)
